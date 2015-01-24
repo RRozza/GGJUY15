@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ArrowsKeysBehaviour : MonoBehaviour {
 
-	public float speed = 1.5f;	
+	public float speed;	
 
 	// Use this for initialization
 	void Start () {

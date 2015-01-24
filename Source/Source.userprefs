@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ArrowsKeysBehaviour2.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Collition.cs">
     <Files>
-      <File FileName="Assets\Scripts\ArrowsKeysBehaviour2.cs" Line="14" Column="18" />
-      <File FileName="Assets\Scripts\ArrowsKeysBehaviour.cs" Line="6" Column="28" />
-      <File FileName="Assets\Scripts\TremblingBehaviour.cs" Line="45" Column="22" />
+      <File FileName="Assets\Scripts\ArrowsKeysBehaviour.cs" Line="6" Column="20" />
+      <File FileName="Assets\Scripts\ArrowsKeysBehaviour2.cs" Line="6" Column="20" />
+      <File FileName="Assets\Scripts\TremblingBehaviour.cs" Line="17" Column="18" />
+      <File FileName="Assets\Scripts\Collition.cs" Line="15" Column="102" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

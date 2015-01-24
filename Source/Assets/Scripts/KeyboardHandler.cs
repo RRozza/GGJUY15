@@ -2,9 +2,16 @@
 using System.Collections;
 
 public class KeyboardHandler : MonoBehaviour {
+
+	private Animator anim;
+
 	public float speed;
 	public float dashSpeed;
 	public Boundary boundary;
+
+	void Start() {
+		anim = GetComponent<Animator> ();
+	}
 
 	void CheckArrows(Players player) {
 		if (Context.SharedInstance.isKeyPress (player, Keys.LEFT)) {
@@ -70,7 +77,11 @@ public class KeyboardHandler : MonoBehaviour {
 				return;
 			}
 		}
-		
+
+		if (Context.SharedInstance.isKeyPress(player, Keys.PUNCH)) {
+			anim.SetBool("P1Punch",true);
+		}
+
 		//Limites de campo de juego
 		transform.position = new Vector2(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax));
 

@@ -72,5 +72,10 @@ public class CollisionPlayer : MonoBehaviour {
 				player2.transform.position += (Vector3.right * speed * Time.deltaTime) * impulse * punch1;
 			}
 		}
+
+		if (collision.gameObject.CompareTag ("Obstacle")) {
+			Players player = (gameObject.name == "Player1") ? Players.P1 : Players.P2;	
+			Stun (player);
+		}
 	}
 }

@@ -48,9 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ArrowsKeysBehaviour.cs" />
      <Compile Include="Assets\Scripts\ArrowsKeysBehaviour2.cs" />
+     <Compile Include="Assets\Scripts\CollisionParachute.cs" />
      <Compile Include="Assets\Scripts\Collisions.cs" />
-     <Compile Include="Assets\Scripts\Collisions2.cs" />
      <Compile Include="Assets\Scripts\Context.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\TremblingBehaviour.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

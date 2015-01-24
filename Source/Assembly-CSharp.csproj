@@ -49,7 +49,9 @@
      <Compile Include="Assets\Scripts\CollisionParachute.cs" />
      <Compile Include="Assets\Scripts\CollisionPlayer.cs" />
      <Compile Include="Assets\Scripts\Context.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\KeyboardHandler.cs" />
+     <Compile Include="Assets\Scripts\ObstacleAsension.cs" />
      <Compile Include="Assets\Scripts\RegisterGO.cs" />
      <Compile Include="Assets\Scripts\TremblingBehaviour.cs" />
   </ItemGroup>

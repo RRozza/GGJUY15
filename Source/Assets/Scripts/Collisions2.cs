@@ -51,5 +51,10 @@ public class Collisions2 : MonoBehaviour {
 			GameObject.Find("Player1").transform.position += (Vector3.left * speed * Time.deltaTime) * impulse;
 			GameObject.Find("Player2").transform.position += (Vector3.right * speed * Time.deltaTime) * impulse;
 		}
+		if (collision.gameObject.name == "Parachute")
+		{
+			//Activar animaciones con parachute
+		}
+
 	}
 }

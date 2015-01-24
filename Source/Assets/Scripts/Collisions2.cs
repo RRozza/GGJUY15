@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Collisions2 : MonoBehaviour {
 
-	public int speed;
+	public float speed;
 	public int impulse;
 	
 	void OnTriggerEnter2D (Collider2D collision){
@@ -14,6 +14,12 @@ public class Collisions2 : MonoBehaviour {
 			
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				GameObject.Find ("Player2").transform.position += (Vector3.left * speed * Time.deltaTime) * impulse;        
+			}
+			if (Input.GetKey (KeyCode.UpArrow)) {
+				GameObject.Find ("Player2").transform.position += (Vector3.up * speed * Time.deltaTime) * impulse;        
+			}			
+			if (Input.GetKey (KeyCode.DownArrow)) {
+				GameObject.Find ("Player2").transform.position += (Vector3.down * speed * Time.deltaTime) * impulse;        
 			}
 		}
 	}

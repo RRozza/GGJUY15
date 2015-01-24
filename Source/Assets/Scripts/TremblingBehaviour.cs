@@ -6,12 +6,7 @@ public class TremblingBehaviour : MonoBehaviour {
 	public float speed;
 	public int limit;
 	private int position = 0; 
-	private bool direction = true; 
-
-	// Use this for initialization
-	void Start () {
-	
-	}
+	private bool direction = true;
 	
 	// Update is called once per frame
 	void Update () {

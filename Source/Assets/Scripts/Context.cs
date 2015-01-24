@@ -1,12 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum Players { P1, P2 }
 public enum Keys { UP, DOWN, LEFT, RIGHT, PUNCH, DASH }
+public enum ParachuteState { NONE, P1, P2 }
 
 [System.Serializable]
 public class Boundary {
 	public float xMin, xMax, yMin, yMax;
+}
+
+public static class Registry {
+	static List<GameObject> register = new List<GameObject>();
+	
+	public static void Add(GameObject go)
+	{
+		register.Add(go);
+	}
+	
+	public static void Remove(GameObject go)
+	{
+		register.Remove(go);
+	}
+	
+	public static GameObject Find(string name)
+	{
+		return register.Find(x => x.name == name);
+	}
 }
 
 public class Context : MonoBehaviour {
@@ -23,7 +44,9 @@ public class Context : MonoBehaviour {
 	
 	public bool player1_mutex = false;
 	public bool player2_mutex = false;
-	public bool collisioning = false;
+	public int player1_dash = 0;
+	public int player2_dash = 0;
+	public ParachuteState parachute_state = ParachuteState.NONE;
 
 	public bool isKeyPress(Players player, Keys key) {
 		switch (key) {

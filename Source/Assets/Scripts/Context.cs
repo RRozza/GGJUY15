@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Context : MonoBehaviour {
+public enum Players { P1, P2 }
+public enum Keys { UP, DOWN, LEFT, RIGHT, PUNCH, DASH }
 
-	public bool player1_mutex = false;
-	public bool player2_mutex = false;
-	public bool collisioning = false;
+[System.Serializable]
+public class Boundary {
+	public float xMin, xMax, yMin, yMax;
+}
+
+public class Context : MonoBehaviour {
 
 	private static Context instance = null;
 	public static Context SharedInstance {
@@ -16,14 +20,26 @@ public class Context : MonoBehaviour {
 			return instance;
 		}
 	}
+	
+	public bool player1_mutex = false;
+	public bool player2_mutex = false;
+	public bool collisioning = false;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public bool isKeyPress(Players player, Keys key) {
+		switch (key) {
+			case Keys.UP:
+				return (player == Players.P1) ? Input.GetKey(KeyCode.UpArrow) : Input.GetKey(KeyCode.W); 
+			case Keys.DOWN:
+				return (player == Players.P1) ? Input.GetKey(KeyCode.DownArrow) : Input.GetKey(KeyCode.S); 
+			case Keys.LEFT:
+				return (player == Players.P1) ? Input.GetKey(KeyCode.LeftArrow) : Input.GetKey(KeyCode.A);
+			case Keys.RIGHT:
+				return (player == Players.P1) ? Input.GetKey(KeyCode.RightArrow) : Input.GetKey(KeyCode.D);
+			case Keys.PUNCH:
+				return (player == Players.P1) ? Input.GetKey(KeyCode.Keypad1) : Input.GetKey(KeyCode.G);
+			case Keys.DASH:
+				return (player == Players.P1) ? Input.GetKey(KeyCode.Keypad2) : Input.GetKey(KeyCode.H);
+		}
+		return false;
 	}
 }

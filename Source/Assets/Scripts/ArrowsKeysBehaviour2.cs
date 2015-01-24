@@ -3,7 +3,8 @@ using System.Collections;
 
 public class ArrowsKeysBehaviour2 : MonoBehaviour {
 
-	public float speed = 1.5f;	
+	public float speed = 1.5f;
+	public Boundary boundary;
 
 	// Use this for initialization
 	void Start () {
@@ -28,5 +29,10 @@ public class ArrowsKeysBehaviour2 : MonoBehaviour {
 		{
 			transform.position += Vector3.down * speed * Time.deltaTime;
 		}
+		transform.position = new Vector2 
+			(
+				Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax),
+				Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax)
+				);
 	}
 }

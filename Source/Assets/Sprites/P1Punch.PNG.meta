@@ -1,11 +1,15 @@
 fileFormatVersion: 2
-guid: 0ccb304710fb7f44db5b65aa0373de4d
+guid: 2a83ca5fd8e45204a910719b464eb32e
 TextureImporter:
   fileIDToRecycleName:
-    21300000: P2Idle_0
-    21300002: P2Idle_1
-    21300004: P2Idle_2
-    21300006: P2Idle_3
+    21300000: P1Punch_0
+    21300002: P1Punch_1
+    21300004: P1Punch_2
+    21300006: P1Punch_3
+    21300008: P1Punch_4
+    21300010: P1Punch_5
+    21300012: P1Punch_6
+    21300014: P1Punch_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -41,13 +45,73 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: P2Idle_0
+    - name: P1Punch_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 550
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Punch_1
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1200
+        width: 550
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Punch_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 550
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Punch_3
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 800
+        width: 550
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Punch_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 550
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Punch_5
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 400
+        width: 550
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Punch_6
       rect:
         serializedVersion: 2
         x: 0
@@ -57,30 +121,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: P2Idle_1
+    - name: P1Punch_7
       rect:
         serializedVersion: 2
         x: 550
-        y: 0
-        width: 550
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: P2Idle_2
-      rect:
-        serializedVersion: 2
-        x: 1100
-        y: 0
-        width: 550
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: P2Idle_3
-      rect:
-        serializedVersion: 2
-        x: 1650
         y: 0
         width: 550
         height: 400

@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CollisionParachute.cs" />
-     <Compile Include="Assets\Scripts\Collisions.cs" />
+     <Compile Include="Assets\Scripts\CollisionPlayer.cs" />
      <Compile Include="Assets\Scripts\Context.cs" />
      <Compile Include="Assets\Scripts\KeyboardHandler.cs" />
      <Compile Include="Assets\Scripts\TremblingBehaviour.cs" />

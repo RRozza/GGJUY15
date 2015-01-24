@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class ObstacleAsension : MonoBehaviour {
-	
-	
+
 	public float speed;
 	public int limit;
 	private int position = 0; 
@@ -22,11 +21,5 @@ public class ObstacleAsension : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position += (Vector3.up * speed * Time.deltaTime);
-		//Debug.Log (transform.localPosition.y);
-		//int roundedY = Mathf.RoundToInt(transform.position.y);
-		//if (roundedY==screenTop){
-			//Destroy(gameObject);
-		//}
 	}
 }
-

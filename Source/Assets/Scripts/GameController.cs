@@ -32,17 +32,16 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator SpawnWaves()
 	{
-
 		yield return new WaitForSeconds(startWait);
 		while (true) {
-						for (int i = 0; i < obstacleCount; i++) {
-								Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
-								Quaternion spawnRotation = new Quaternion ();
-								Instantiate (flyingObstacle, spawnPosition, spawnRotation);
-								yield return new WaitForSeconds (spawnWait);
-						}
+			for (int i = 0; i < obstacleCount; i++) {
+				Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+				Quaternion spawnRotation = new Quaternion ();
+				Instantiate (flyingObstacle, spawnPosition, spawnRotation);
+				yield return new WaitForSeconds (spawnWait);
+			}
 			yield return new WaitForSeconds(waveWait);
-				}
+		}
 	}
 	
 }

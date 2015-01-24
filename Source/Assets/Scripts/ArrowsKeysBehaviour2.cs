@@ -7,10 +7,6 @@ public class ArrowsKeysBehaviour2 : MonoBehaviour {
 	public float dashSpeed;
 	public Boundary boundary;
 
-<<<<<<< HEAD
-=======
-	// Update is called once per frame
->>>>>>> origin/master
 	void Update () {
 		if (Input.GetKey(KeyCode.A)) {
 			transform.position += Vector3.left * speed * Time.deltaTime;
@@ -25,14 +21,15 @@ public class ArrowsKeysBehaviour2 : MonoBehaviour {
 			if (Input.GetKey(KeyCode.H)) {
 				//Down Dash
 				transform.position += Vector3.down * dashSpeed * Time.deltaTime;
-			}else{
+			}	
+			else
+			{
 				transform.position += Vector3.down * speed * Time.deltaTime;
 			}
 		}
-
-<<<<<<< HEAD
+		
 		//Rebote zona de aire
-		if (Input.GetKey(KeyCode.G))
+		if (Input.GetKey(KeyCode.H))
 		{
 			if (transform.position.y < -1.8f)
 			{
@@ -52,9 +49,5 @@ public class ArrowsKeysBehaviour2 : MonoBehaviour {
 				Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax)
 			);
 
-
-=======
-		transform.position = new Vector2(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax));
->>>>>>> origin/master
 	}
 }

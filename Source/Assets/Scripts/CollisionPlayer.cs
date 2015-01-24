@@ -7,11 +7,27 @@ public class CollisionPlayer : MonoBehaviour {
 	public int impulse;
 	
 	private int timer = 100;
-	
+
+	void Stun(Players player) {
+		GameObject parachute = Registry.Find("Parachute");
+
+		if (player == Players.P1) {
+			Context.SharedInstance.player1_mutex = true;
+			if (Context.SharedInstance.parachute_state == ParachuteState.P1) {
+				parachute.SetActive(true);	
+			}
+		} else {
+			Context.SharedInstance.player2_mutex = true;
+			if (Context.SharedInstance.parachute_state == ParachuteState.P2) {
+				parachute.SetActive(true);	
+			}
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
-		GameObject player1 = GameObject.Find("Player1");
-		GameObject player2 = GameObject.Find("Player2");
+		GameObject player1 = Registry.Find("Player1");
+		GameObject player2 = Registry.Find("Player2");
 		
 		if (timer > 0) {
 			if (Context.SharedInstance.player2_mutex) {
@@ -28,31 +44,26 @@ public class CollisionPlayer : MonoBehaviour {
 			Context.SharedInstance.player2_mutex = false;
 			timer = 100;
 		}		
-		
-		if (Context.SharedInstance.collisioning == true) {
-			Context.SharedInstance.collisioning = false;		
-		}
 	}
 	
 	void OnTriggerEnter2D (Collider2D collision){
-		GameObject player1 = GameObject.Find("Player1");
-		GameObject player2 = GameObject.Find("Player2");
+		GameObject player1 = Registry.Find("Player1");
+		GameObject player2 = Registry.Find("Player2");
 		
 		if (collision.gameObject.CompareTag("Player")) {
-			Context.SharedInstance.collisioning = true;
 			bool p1AtTop = player1.transform.position.y > player2.transform.position.y;
 			bool p2AtTop = player1.transform.position.y < player2.transform.position.y;
 			
 			if (Input.GetKey (KeyCode.Keypad2) && p1AtTop) {
-				Context.SharedInstance.player2_mutex = true;
+				Stun (Players.P2);
 			}
 			
 			if (Input.GetKey (KeyCode.H) && p2AtTop) {
-				Context.SharedInstance.player1_mutex = true;
+				Stun (Players.P1);
 			}
-			
-			int punch1 = Input.GetKey (KeyCode.Keypad1) ? 4 : 1;
-			int punch2 = Input.GetKey (KeyCode.G) ? 4 : 1;
+
+			int punch1 = (Input.GetKey (KeyCode.Keypad1) && Context.SharedInstance.parachute_state != ParachuteState.P1) ? 4 : 1;
+			int punch2 = (Input.GetKey (KeyCode.G) && Context.SharedInstance.parachute_state != ParachuteState.P2 ) ? 4 : 1;
 			if (player1.transform.position.x > player2.transform.position.x) {
 				player1.transform.position += (Vector3.right * speed * Time.deltaTime) * impulse * punch2;
 				player2.transform.position += (Vector3.left * speed * Time.deltaTime) * impulse * punch1;

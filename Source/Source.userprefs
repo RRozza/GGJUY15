@@ -4,8 +4,12 @@
     <Files>
       <File FileName="Assets\Scripts\Context.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CollisionParachute.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\KeyboardHandler.cs" Line="33" Column="17" />
-      <File FileName="Assets\Scripts\CollisionPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\KeyboardHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CollisionPlayer.cs" Line="51" Column="49" />
+      <File FileName="Assets\Scripts\TremblingBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RegisterGO.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="26" Column="37" />
+      <File FileName="Assets\Scripts\ObstacleAsension.cs" Line="31" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

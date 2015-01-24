@@ -7,19 +7,51 @@ public class KeyboardHandler : MonoBehaviour {
 	public Boundary boundary;
 
 	void CheckArrows(Players player) {
-		if (Context.SharedInstance.isKeyPress(player, Keys.LEFT)) {
+		if (Context.SharedInstance.isKeyPress (player, Keys.LEFT)) {
 			transform.position += Vector3.left * speed * Time.deltaTime;
 		}
-		if (Context.SharedInstance.isKeyPress(player, Keys.RIGHT)) {
+		if (Context.SharedInstance.isKeyPress (player, Keys.RIGHT)) {
 			transform.position += Vector3.right * speed * Time.deltaTime;
 		}
-		if (Context.SharedInstance.isKeyPress(player, Keys.UP)) {
+		if (Context.SharedInstance.isKeyPress (player, Keys.UP)) {
 			transform.position += Vector3.up * speed * Time.deltaTime;
 		}
-		if (Context.SharedInstance.isKeyPress(player, Keys.DOWN)) {
-			if (Context.SharedInstance.isKeyPress(player, Keys.DASH)) {
-				transform.position += Vector3.down * dashSpeed * Time.deltaTime;
-			} else	{
+
+		if (Context.SharedInstance.isKeyPress (player, Keys.DOWN)) {
+			ParachuteState playerGrabParachute = (player == Players.P1) ? ParachuteState.P1 : ParachuteState.P2;
+			bool dashPressed = (player == Players.P1) ? Context.SharedInstance.player1_dash > 0 : Context.SharedInstance.player2_dash > 0;
+			bool canDash = (Context.SharedInstance.parachute_state != playerGrabParachute && dashPressed);
+
+			if (Context.SharedInstance.isKeyPress (player, Keys.DASH)) {
+
+				switch(player) {
+					case Players.P1:
+						Context.SharedInstance.player1_dash++;
+						break;
+					case Players.P2:
+						Context.SharedInstance.player2_dash++;
+						break;
+				}
+
+			    if (canDash) {
+					transform.position += Vector3.down * dashSpeed * Time.deltaTime;
+
+					switch(player) {
+						case Players.P1: 
+							Context.SharedInstance.player1_dash++;
+							if (Context.SharedInstance.player1_dash > 50) {
+								Context.SharedInstance.player1_dash = -20;
+							}
+							break;
+						case Players.P2:
+							Context.SharedInstance.player2_dash++;
+							if (Context.SharedInstance.player2_dash > 50) {
+								Context.SharedInstance.player2_dash = -20;
+							}
+							break;					
+					}
+				}
+			} else {
 				transform.position += Vector3.down * speed * Time.deltaTime;
 			}
 		}

@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\ObstacleAsension.cs" />
      <Compile Include="Assets\Scripts\RegisterGO.cs" />
      <Compile Include="Assets\Scripts\TremblingBehaviour.cs" />
+     <Compile Include="Assets\Scripts\VideoController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

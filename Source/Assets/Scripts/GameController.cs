@@ -105,7 +105,13 @@ public class GameController : MonoBehaviour {
 
 		switch (winner) {
 			case Players.NONE:
-
+				
+				GameObject parachute = Registry.Find("Parachute");
+				parachute.SetActive(false);
+				GameObject player1 = Registry.Find("Player1");
+				player1.SetActive(false);
+				GameObject player2 = Registry.Find("Player2");
+				player2.SetActive(false);
 				break;
 			case Players.P1:
 

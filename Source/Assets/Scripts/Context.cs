@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public enum Players
 {
 		P1,
-		P2
+		P2,
+		NONE
 }
 
 public enum Keys
@@ -53,7 +54,6 @@ public static class Registry
 
 public class Context : MonoBehaviour
 {
-
 		private static Context instance = null;
 
 		public static Context SharedInstance {
@@ -68,12 +68,12 @@ public class Context : MonoBehaviour
 		public int timerSeconds = 0;
 		public bool trembleEnabled = false;
 		public bool parachuteOpenEnabled = false;
-		public bool player1_mutex = false;
-		public bool player2_mutex = false;
-		public int player1_dash = 0;
-		public int player2_dash = 0;
+		public bool player1Mutex = false;
+		public bool player2Mutex = false;
+		public int player1Dash = 0;
+		public int player2Dash = 0;
+		public bool gameEnded = false;
 		public ParachuteState parachute_state = ParachuteState.NONE;
-		public string gameWinner = "";
 		public bool parachuteIsOpened = false;
 
 		public bool isKeyPress (Players player, Keys key)
@@ -97,29 +97,17 @@ public class Context : MonoBehaviour
 
 		public void updateTimer (int seconds)
 		{
-				this.timerSeconds = seconds;
+			timerSeconds = seconds;
 		}
 
 		public void startParachuteTremble ()
 		{
-				trembleEnabled = true;
+			trembleEnabled = true;
 		}
 
 		public void enableParachuteOpening ()
 		{
-				parachuteOpenEnabled = true;
+			parachuteOpenEnabled = true;
 		}
-
-		public void winGame (string winnerAux)
-		{
-				this.gameWinner = winnerAux;
-				//Extra win logic
-				//Player victory animation
-
-				//remove log
-				Debug.Log ("PLAYER " + winnerAux + " IS THE WINNER");
-		}
-
-
-
+	
 }

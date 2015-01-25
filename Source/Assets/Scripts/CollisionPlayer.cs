@@ -18,12 +18,12 @@ public class CollisionPlayer : MonoBehaviour {
 		GameObject parachute = Registry.Find("Parachute");
 
 		if (player == Players.P1) {
-			Context.SharedInstance.player1_mutex = true;
+			Context.SharedInstance.player1Mutex = true;
 			if (Context.SharedInstance.parachute_state == ParachuteState.P1) {
 				parachute.SetActive(true);	
 			}
 		} else {
-			Context.SharedInstance.player2_mutex = true;
+			Context.SharedInstance.player2Mutex = true;
 			if (Context.SharedInstance.parachute_state == ParachuteState.P2) {
 				parachute.SetActive(true);	
 			}
@@ -39,18 +39,18 @@ public class CollisionPlayer : MonoBehaviour {
 		GameObject player2 = Registry.Find("Player2");
 		
 		if (timer > 0) {
-			if (Context.SharedInstance.player2_mutex) {
+			if (Context.SharedInstance.player2Mutex) {
 				player2.transform.position += (Vector3.up * speed * Time.deltaTime);
 				timer--;
 			}
 			
-			if (Context.SharedInstance.player1_mutex) {
+			if (Context.SharedInstance.player1Mutex) {
 				player1.transform.position += (Vector3.up * speed * Time.deltaTime);
 				timer--;
 			}
 		} else {
-			Context.SharedInstance.player1_mutex = false;
-			Context.SharedInstance.player2_mutex = false;
+			Context.SharedInstance.player1Mutex = false;
+			Context.SharedInstance.player2Mutex = false;
 			anim.SetBool ("P1Stun", false);
 			anim.SetBool ("P2Stun", false);
 			timer = 100;

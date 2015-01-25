@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CollisionPlayer : MonoBehaviour {
@@ -21,12 +21,16 @@ public class CollisionPlayer : MonoBehaviour {
 			Context.SharedInstance.player1Mutex = true;
 			if (Context.SharedInstance.parachute_state == ParachuteState.P1) {
 				Context.SharedInstance.parachute_state = ParachuteState.NONE;
+				Context.SharedInstance.winner = Players.NONE;
 				parachute.SetActive(true);	
 			}
-		} else {
+		} 
+
+		if (player == Players.P2){
 			Context.SharedInstance.player2Mutex = true;
 			if (Context.SharedInstance.parachute_state == ParachuteState.P2) {
 				Context.SharedInstance.parachute_state = ParachuteState.NONE;
+				Context.SharedInstance.winner = Players.NONE;
 				parachute.SetActive(true);	
 			}
 		}
@@ -77,28 +81,45 @@ public class CollisionPlayer : MonoBehaviour {
 			bool p1AtTop = player1.transform.position.y > player2.transform.position.y;
 			bool p2AtTop = player1.transform.position.y < player2.transform.position.y;
 			
-			if (Input.GetKey (KeyCode.Keypad2) && p1AtTop) {
+			if (Context.SharedInstance.isKeyPress(Players.P1, Keys.DASH) && p1AtTop) {
 				Stun (Players.P2);
 			}
 			
-			if (Input.GetKey (KeyCode.H) && p2AtTop) {
+			if (Context.SharedInstance.isKeyPress(Players.P2, Keys.DASH) && p2AtTop) {
 				Stun (Players.P1);
 			}
 
-			int punch1 = (Input.GetKey (KeyCode.Keypad1) && Context.SharedInstance.parachute_state != ParachuteState.P1) ? 4 : 1;
-			int punch2 = (Input.GetKey (KeyCode.G) && Context.SharedInstance.parachute_state != ParachuteState.P2 ) ? 4 : 1;
+			bool punch1Pressed = Context.SharedInstance.isKeyPress(Players.P1, Keys.PUNCH);
+			bool punch2Pressed = Context.SharedInstance.isKeyPress(Players.P2, Keys.PUNCH);
+			float punch1 = (punch1Pressed && Context.SharedInstance.parachute_state != ParachuteState.P1) ? 3 : 1;
+			float punch2 = (punch2Pressed && Context.SharedInstance.parachute_state != ParachuteState.P2 ) ? 3 : 1;
 			if (player1.transform.position.x > player2.transform.position.x) {
 				player1.transform.position += (Vector3.right * speed * Time.deltaTime) * impulse * punch2;
 				player2.transform.position += (Vector3.left * speed * Time.deltaTime) * impulse * punch1;
-			} else {
+
+				if (punch1Pressed && Context.SharedInstance.parachute_state == ParachuteState.P2) {
+					Stun (Players.P2);
+				}
+			} 
+
+			if (player1.transform.position.x > player2.transform.position.x) {
 				player1.transform.position += (Vector3.left * speed * Time.deltaTime) * impulse * punch2;
 				player2.transform.position += (Vector3.right * speed * Time.deltaTime) * impulse * punch1;
+
+				if (punch2Pressed && Context.SharedInstance.parachute_state == ParachuteState.P1) {
+					Stun (Players.P1);
+				}		
 			}
 		}
 
 		if (collision.gameObject.CompareTag ("Obstacle")) {
 			Players player = (gameObject.name == "Player1") ? Players.P1 : Players.P2;	
 			Stun (player);
+		}
+
+		if (collision.gameObject.CompareTag ("Parachute")) {
+			Context.SharedInstance.parachute_state = (gameObject.name == "Player1") ? ParachuteState.P1 : ParachuteState.P2;
+			Registry.Find("Parachute").SetActive(false);
 		}
 	}
 }

@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public enum Players
-{
+{ 
+		NONE,
 		P1,
-		P2,
-		NONE
+		P2
+		
 }
 
 public enum Keys
@@ -78,26 +79,39 @@ public class Context : MonoBehaviour
 		public bool introFinished = false;
 		public Players winner = Players.NONE;
 		public ParachuteState parachute_state = ParachuteState.NONE;
-		public bool parachuteIsOpened = false;
 
 		public bool isKeyPress (Players player, Keys key)
 		{
-				switch (key) {
-				case Keys.UP:
-						return (player == Players.P1) ? Input.GetKey (KeyCode.UpArrow) : Input.GetKey (KeyCode.W); 
+			bool p1key;
+			bool p2key;
+			switch (key) {
+				case Keys.UP:    
+					p1key = (Input.GetKey (KeyCode.UpArrow) || Input.GetAxis ("V Joy 1") < 0);
+					p2key = (Input.GetKey (KeyCode.W) || Input.GetAxis ("V Joy 2") < 0);
+					return (player == Players.P1) ? p1key : p2key; 
 				case Keys.DOWN:
-						return (player == Players.P1) ? Input.GetKey (KeyCode.DownArrow) : Input.GetKey (KeyCode.S); 
+					p1key = (Input.GetKey (KeyCode.DownArrow) || Input.GetAxis ("V Joy 1") > 0);
+					p2key = (Input.GetKey (KeyCode.S) || Input.GetAxis ("V Joy 2") > 0);
+					return (player == Players.P1) ? p1key : p2key; 
 				case Keys.LEFT:
-						return (player == Players.P1) ? Input.GetKey (KeyCode.LeftArrow) : Input.GetKey (KeyCode.A);
+					p1key = (Input.GetKey (KeyCode.LeftArrow) || Input.GetAxis ("H Joy 1") < 0);
+					p2key = (Input.GetKey (KeyCode.A) || Input.GetAxis ("H Joy 2") < 0);
+					return (player == Players.P1) ? p1key : p2key;
 				case Keys.RIGHT:
-						return (player == Players.P1) ? Input.GetKey (KeyCode.RightArrow) : Input.GetKey (KeyCode.D);
+					p1key = (Input.GetKey (KeyCode.RightArrow) || Input.GetAxis ("H Joy 1") > 0);
+					p2key = (Input.GetKey (KeyCode.D) || Input.GetAxis ("H Joy 2") > 0);
+					return (player == Players.P1) ? p1key : p2key;
 				case Keys.PUNCH:
-						return (player == Players.P1) ? Input.GetKey (KeyCode.Keypad1) : Input.GetKey (KeyCode.G);
+					p1key = (Input.GetKey (KeyCode.Keypad1) || Input.GetAxis ("Punch Joy 1") > 0);
+					p2key = (Input.GetKey (KeyCode.G) || Input.GetAxis ("Punch Joy 2") > 0);
+					return (player == Players.P1) ? p1key : p2key;
 				case Keys.DASH:
-						return (player == Players.P1) ? Input.GetKey (KeyCode.Keypad2) : Input.GetKey (KeyCode.H);
-				}
-				return false;
-		}
+					p1key = (Input.GetKey (KeyCode.Keypad2) || Input.GetAxis ("Dash Joy 1") > 0);
+					p2key = (Input.GetKey (KeyCode.H) || Input.GetAxis ("Dash Joy 2") > 0);
+					return (player == Players.P1) ? p1key : p2key;
+			}
+			return false;
+	}
 
 		public void updateTimer (int seconds)
 		{
@@ -107,11 +121,6 @@ public class Context : MonoBehaviour
 		public void startParachuteTremble ()
 		{
 			trembleEnabled = true;
-		}
-
-		public void enableParachuteOpening ()
-		{
-			parachuteOpenEnabled = true;
 		}
 	
 }

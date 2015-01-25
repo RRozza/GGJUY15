@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class StrartController : MonoBehaviour {
 
 	private MovieTexture movie;
@@ -14,10 +15,12 @@ public class StrartController : MonoBehaviour {
 	void Update () {
 		if (Context.SharedInstance.introFinished && !movie.isPlaying) {
 			movie.Play ();
+			audio.Play();
 		}
 
-		if (Input.anyKey) {
+		if (Input.anyKeyDown) {
 			movie.Stop();
+			audio.Stop();
 			gameObject.transform.position += new Vector3(0,0,15);
 			Context.SharedInstance.gameStarted = true;
 			Context.SharedInstance.startTime = Time.time;

@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\CollisionParachute.cs" />
      <Compile Include="Assets\Scripts\CollisionPlayer.cs" />
      <Compile Include="Assets\Scripts\Context.cs" />
+     <Compile Include="Assets\Scripts\EndController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\IntroController.cs" />
      <Compile Include="Assets\Scripts\KeyboardHandler.cs" />

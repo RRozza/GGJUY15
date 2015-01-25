@@ -1,46 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
-	public GameObject flyingObstacle;
+
+	private List<GameObject> spawns = new List<GameObject> ();
+	private ArrayList  spawnsIds = new ArrayList();
+
 	public Vector3 spawnValues;
 	public int obstacleCount;
 	public float spawnWait;
 	public float startWait;
-	public float waveWait;
+	public float spawnSpeed; 
 
-	public int sec=0;
-	public float timecount=0;
-	public float starttime=0;
-	public int parachutePopTime;
-
-	// Use this for initialization
 	void Start () {
-		starttime = Time.time;
-		StartCoroutine (SpawnWaves ());
+		StartCoroutine(SpawnWaves());
 
+		spawnsIds.Add ("Seat");
+		spawnsIds.Add ("Bag");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		timecount = Time.time - starttime;
-		sec = (int)(timecount % 60f);
-		if (sec == parachutePopTime) {
-			//parachute appears from down the screen
+
+	void Update() {
+		foreach (GameObject spawn in spawns) {
+			spawn.transform.position += (Vector3.up * spawnSpeed * Time.deltaTime);	
+
+			if (spawn.transform.position.y > 7.0f) {
+				spawns.Remove(spawn);
+				//GameObject.Destroy(spawn);
+			}
 		}
 	}
 
 	IEnumerator SpawnWaves()
 	{
 		yield return new WaitForSeconds(startWait);
-		while (true) {
-			for (int i = 0; i < obstacleCount; i++) {
-				Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
-				Quaternion spawnRotation = new Quaternion ();
-				Instantiate (flyingObstacle, spawnPosition, spawnRotation);
-				yield return new WaitForSeconds (spawnWait);
-			}
-			yield return new WaitForSeconds(waveWait);
+
+		for (int i=1; i < obstacleCount; i++) {
+			int index = Random.Range(0,2);	
+
+			Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+			GameObject spawn = Instantiate(Registry.Find (spawnsIds[index] as string), spawnPosition, new Quaternion()) as GameObject;
+
+			spawns.Add(spawn);
+
+			yield return new WaitForSeconds(spawnWait);
 		}
 	}
 	

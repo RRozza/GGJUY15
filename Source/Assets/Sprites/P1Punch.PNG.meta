@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2a83ca5fd8e45204a910719b464eb32e
+guid: a9d732e96e3726749851df79937fe580
 TextureImporter:
   fileIDToRecycleName:
     21300000: P1Punch_0
@@ -45,7 +45,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []

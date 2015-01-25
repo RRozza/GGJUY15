@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ccb304710fb7f44db5b65aa0373de4d
+guid: 7808aeef61e8f8e47a08a04602a084b3
 TextureImporter:
   fileIDToRecycleName:
     21300000: P2Idle_0
@@ -41,7 +41,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 200
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []

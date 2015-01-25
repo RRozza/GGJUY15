@@ -2,11 +2,17 @@
 using System.Collections;
 
 public class CollisionPlayer : MonoBehaviour {
-	
+
+	private Animator anim;
+	private string animId;
+	private int timer = 100;
+
 	public float speed;
 	public int impulse;
-	
-	private int timer = 100;
+
+	void Start() {
+		anim = GetComponent<Animator> ();
+	}
 
 	void Stun(Players player) {
 		GameObject parachute = Registry.Find("Parachute");
@@ -22,6 +28,9 @@ public class CollisionPlayer : MonoBehaviour {
 				parachute.SetActive(true);	
 			}
 		}
+
+		animId = (player == Players.P1) ? "P1Stun" : "P2Stun";
+		anim.SetBool (animId, true);
 	}
 
 	// Update is called once per frame
@@ -42,6 +51,8 @@ public class CollisionPlayer : MonoBehaviour {
 		} else {
 			Context.SharedInstance.player1_mutex = false;
 			Context.SharedInstance.player2_mutex = false;
+			anim.SetBool ("P1Stun", false);
+			anim.SetBool ("P2Stun", false);
 			timer = 100;
 		}		
 	}

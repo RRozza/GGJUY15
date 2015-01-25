@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 25375c1f470c5cf4fb46fc3786436e55
+guid: cb8b00cb94efc474c8fe9777d7e1dfb8
 TextureImporter:
   fileIDToRecycleName:
     21300000: chapa_0
@@ -70,7 +70,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 4096
+  maxTextureSize: 2048
   textureSettings:
     filterMode: -1
     aniso: 1
@@ -85,7 +85,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 400
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
@@ -95,69 +95,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4320
-        width: 1280
-        height: 720
+        y: 2880
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_1
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 4320
-        width: 1280
-        height: 720
+        x: 640
+        y: 2880
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_2
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 4320
-        width: 1280
-        height: 720
+        x: 1280
+        y: 2880
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_3
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 4320
-        width: 1280
-        height: 720
+        x: 1920
+        y: 2880
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_4
       rect:
         serializedVersion: 2
-        x: 5120
-        y: 4320
-        width: 1280
-        height: 720
+        x: 2560
+        y: 2880
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_5
       rect:
         serializedVersion: 2
-        x: 6400
-        y: 4320
-        width: 1280
-        height: 720
+        x: 3200
+        y: 2880
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_6
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 4320
-        width: 1280
-        height: 720
+        x: 3840
+        y: 2880
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,69 +165,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3600
-        width: 1280
-        height: 720
+        y: 2400
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_8
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 3600
-        width: 1280
-        height: 720
+        x: 640
+        y: 2400
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_9
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 3600
-        width: 1280
-        height: 720
+        x: 1280
+        y: 2400
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_10
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 3600
-        width: 1280
-        height: 720
+        x: 1920
+        y: 2400
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_11
       rect:
         serializedVersion: 2
-        x: 5120
-        y: 3600
-        width: 1280
-        height: 720
+        x: 2560
+        y: 2400
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_12
       rect:
         serializedVersion: 2
-        x: 6400
-        y: 3600
-        width: 1280
-        height: 720
+        x: 3200
+        y: 2400
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_13
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 3600
-        width: 1280
-        height: 720
+        x: 3840
+        y: 2400
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,69 +235,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2880
-        width: 1280
-        height: 720
+        y: 1920
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_15
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 2880
-        width: 1280
-        height: 720
+        x: 640
+        y: 1920
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_16
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 2880
-        width: 1280
-        height: 720
+        x: 1280
+        y: 1920
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_17
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 2880
-        width: 1280
-        height: 720
+        x: 1920
+        y: 1920
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_18
       rect:
         serializedVersion: 2
-        x: 5120
-        y: 2880
-        width: 1280
-        height: 720
+        x: 2560
+        y: 1920
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_19
       rect:
         serializedVersion: 2
-        x: 6400
-        y: 2880
-        width: 1280
-        height: 720
+        x: 3200
+        y: 1920
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_20
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 2880
-        width: 1280
-        height: 720
+        x: 3840
+        y: 1920
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,69 +305,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2160
-        width: 1280
-        height: 720
+        y: 1440
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_22
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 2160
-        width: 1280
-        height: 720
+        x: 640
+        y: 1440
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_23
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 2160
-        width: 1280
-        height: 720
+        x: 1280
+        y: 1440
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_24
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 2160
-        width: 1280
-        height: 720
+        x: 1920
+        y: 1440
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_25
       rect:
         serializedVersion: 2
-        x: 5120
-        y: 2160
-        width: 1280
-        height: 720
+        x: 2560
+        y: 1440
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_26
       rect:
         serializedVersion: 2
-        x: 6400
-        y: 2160
-        width: 1280
-        height: 720
+        x: 3200
+        y: 1440
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_27
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 2160
-        width: 1280
-        height: 720
+        x: 3840
+        y: 1440
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -375,69 +375,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1440
-        width: 1280
-        height: 720
+        y: 960
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_29
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 1440
-        width: 1280
-        height: 720
+        x: 640
+        y: 960
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_30
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 1440
-        width: 1280
-        height: 720
+        x: 1280
+        y: 960
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_31
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 1440
-        width: 1280
-        height: 720
+        x: 1920
+        y: 960
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_32
       rect:
         serializedVersion: 2
-        x: 5120
-        y: 1440
-        width: 1280
-        height: 720
+        x: 2560
+        y: 960
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_33
       rect:
         serializedVersion: 2
-        x: 6400
-        y: 1440
-        width: 1280
-        height: 720
+        x: 3200
+        y: 960
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_34
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 1440
-        width: 1280
-        height: 720
+        x: 3840
+        y: 960
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,69 +445,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 720
-        width: 1280
-        height: 720
+        y: 480
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_36
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 720
-        width: 1280
-        height: 720
+        x: 640
+        y: 480
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_37
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 720
-        width: 1280
-        height: 720
+        x: 1280
+        y: 480
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_38
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 720
-        width: 1280
-        height: 720
+        x: 1920
+        y: 480
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_39
       rect:
         serializedVersion: 2
-        x: 5120
-        y: 720
-        width: 1280
-        height: 720
+        x: 2560
+        y: 480
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_40
       rect:
         serializedVersion: 2
-        x: 6400
-        y: 720
-        width: 1280
-        height: 720
+        x: 3200
+        y: 480
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_41
       rect:
         serializedVersion: 2
-        x: 7680
-        y: 720
-        width: 1280
-        height: 720
+        x: 3840
+        y: 480
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -516,58 +516,58 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1280
-        height: 720
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_43
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 640
         y: 0
-        width: 1280
-        height: 720
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_44
       rect:
         serializedVersion: 2
-        x: 2560
+        x: 1280
         y: 0
-        width: 1280
-        height: 720
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_45
       rect:
         serializedVersion: 2
-        x: 3840
+        x: 1920
         y: 0
-        width: 1280
-        height: 720
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_46
       rect:
         serializedVersion: 2
-        x: 5120
+        x: 2560
         y: 0
-        width: 1280
-        height: 720
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: chapa_47
       rect:
         serializedVersion: 2
-        x: 6400
+        x: 3200
         y: 0
-        width: 1280
-        height: 720
+        width: 640
+        height: 480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

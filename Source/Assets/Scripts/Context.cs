@@ -66,6 +66,7 @@ public class Context : MonoBehaviour
 		}
 
 		public int timerSeconds = 0;
+		public float startTime = 0;
 		public bool trembleEnabled = false;
 		public bool parachuteOpenEnabled = false;
 		public bool player1Mutex = false;

@@ -20,6 +20,7 @@ public class StrartController : MonoBehaviour {
 			movie.Stop();
 			gameObject.transform.position += new Vector3(0,0,15);
 			Context.SharedInstance.gameStarted = true;
+			Context.SharedInstance.startTime = Time.time;
 			GameObject.Destroy(gameObject);
 		}
 	}

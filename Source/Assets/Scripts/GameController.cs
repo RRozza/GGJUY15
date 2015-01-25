@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 	private List<GameObject> spawns = new List<GameObject> ();
 	private ArrayList  spawnsIds = new ArrayList();
 	private Vector3 parachuteStartPosition = new Vector3 (0, -6, 0);
-	private float starttime;
+	private float Context.SharedInstance.startTime;
 	private float timecount;
 
 	public float parachutePopTime;
@@ -22,8 +22,6 @@ public class GameController : MonoBehaviour {
 	public int gameEndTime;
 
 	void Start() {
-		starttime = Time.time;
-
 		spawnsIds.Add ("Seat");
 		spawnsIds.Add ("Bag");
 
@@ -73,7 +71,7 @@ public class GameController : MonoBehaviour {
 				EndGame (Players.NONE);
 			}
 			
-			timecount = Time.time - starttime;
+			timecount = Time.time - Context.SharedInstance.startTime;
 			Context.SharedInstance.updateTimer((int)(timecount % 60f));
 		
 		}
@@ -83,7 +81,14 @@ public class GameController : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(startWait);
 
+		bool first = true;
+
 		for (int i=1; i < obstacleCount; i++) {
+			if (first){
+				yield return new WaitForSeconds(spawnWait*2);
+				first = false;
+			}
+
 			int index = Random.Range(0,2);	
 
 			Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);

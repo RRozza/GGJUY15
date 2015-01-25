@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
 		public int parachutePopTime;
 		public int parachuteTrembleY;
 		public int parachuteAsensionSpeed;
+		public int parachuteOpenTime;
+		public int gameEndTime;
 		private Vector3 parachuteStartPosition = new Vector3 (0, -6, 0);
 
 		// Use this for initialization
@@ -43,6 +45,18 @@ public class GameController : MonoBehaviour
 						} else if (parachute.transform.position.y >= parachuteTrembleY - 1) {
 								Context.SharedInstance.startParachuteTremble ();
 						}
+				}
+				if (sec >= parachuteOpenTime) {
+						Context.SharedInstance.enableParachuteOpening ();
+				}
+				if (sec == this.gameEndTime) {
+						//GAME END LOGIC
+				
+						//CALCULATE ROUND WINNER
+						//UPDATE SCORES
+						//SHOW ENDING
+						//START NEXT GAME
+
 				}
 		}
 

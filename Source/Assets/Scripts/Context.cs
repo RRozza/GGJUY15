@@ -66,6 +66,7 @@ public class Context : MonoBehaviour
 		}
 
 		public bool trembleEnabled = false;
+		public bool parachuteOpenEnabled = false;
 		public bool player1_mutex = false;
 		public bool player2_mutex = false;
 		public int player1_dash = 0;
@@ -91,7 +92,15 @@ public class Context : MonoBehaviour
 				return false;
 		}
 
-	public void startParachuteTremble(){
-		trembleEnabled = true;
-	}
+		public void startParachuteTremble ()
+		{
+				trembleEnabled = true;
+		}
+
+		public void enableParachuteOpening ()
+		{
+				parachuteOpenEnabled = true;
+		}
+
+
 }

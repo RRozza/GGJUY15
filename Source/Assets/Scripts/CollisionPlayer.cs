@@ -20,11 +20,13 @@ public class CollisionPlayer : MonoBehaviour {
 		if (player == Players.P1) {
 			Context.SharedInstance.player1Mutex = true;
 			if (Context.SharedInstance.parachute_state == ParachuteState.P1) {
+				Context.SharedInstance.parachute_state = ParachuteState.NONE;
 				parachute.SetActive(true);	
 			}
 		} else {
 			Context.SharedInstance.player2Mutex = true;
 			if (Context.SharedInstance.parachute_state == ParachuteState.P2) {
+				Context.SharedInstance.parachute_state = ParachuteState.NONE;
 				parachute.SetActive(true);	
 			}
 		}
@@ -55,6 +57,14 @@ public class CollisionPlayer : MonoBehaviour {
 			anim.SetBool ("P2Stun", false);
 			timer = 100;
 		}		
+
+		animId = (Context.SharedInstance.parachute_state == ParachuteState.P1) ? "P1Parachute" : "P2Parachute";
+		if (Context.SharedInstance.parachute_state == ParachuteState.NONE) {
+			anim.SetBool ("P1Parachute", false);
+			anim.SetBool ("P2Parachute", false);
+		} else {
+			anim.SetBool (animId, true);	
+		}
 	}
 	
 	void OnTriggerEnter2D (Collider2D collision){

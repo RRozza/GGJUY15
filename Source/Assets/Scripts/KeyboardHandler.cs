@@ -50,19 +50,19 @@ public class KeyboardHandler : MonoBehaviour {
 			if (Context.SharedInstance.isKeyPress (player, Keys.DASH)) {
 				switch (player) {
 				case Players.P1: 
-					if (Context.SharedInstance.player1_dash == 0) {
-						Context.SharedInstance.player1_dash++;
+					if (Context.SharedInstance.player1Dash == 0) {
+						Context.SharedInstance.player1Dash++;
 					}
 					break;
 				case Players.P2:
-					if (Context.SharedInstance.player2_dash == 0) {
-						Context.SharedInstance.player2_dash++;
+					if (Context.SharedInstance.player2Dash == 0) {
+						Context.SharedInstance.player2Dash++;
 					}
 					break;					
 				} 
 
 				ParachuteState playerGrabParachute = (player == Players.P1) ? ParachuteState.P1 : ParachuteState.P2;
-				bool dashPressed = (player == Players.P1) ? Context.SharedInstance.player1_dash > 0 : Context.SharedInstance.player2_dash > 0;
+				bool dashPressed = (player == Players.P1) ? Context.SharedInstance.player1Dash > 0 : Context.SharedInstance.player2Dash > 0;
 				bool canDash = (Context.SharedInstance.parachute_state != playerGrabParachute && dashPressed);
 
 				if (canDash) {
@@ -80,20 +80,20 @@ public class KeyboardHandler : MonoBehaviour {
 
 		switch(player) {
 			case Players.P1: 
-				if (Context.SharedInstance.player1_dash > 0 || Context.SharedInstance.player1_dash < 0) {
-					Context.SharedInstance.player1_dash++;
+				if (Context.SharedInstance.player1Dash > 0 || Context.SharedInstance.player1Dash < 0) {
+					Context.SharedInstance.player1Dash++;
 				}
-			if (Context.SharedInstance.player1_dash > dashTime) {	
-					Context.SharedInstance.player1_dash = (-1*dashTime);
+			if (Context.SharedInstance.player1Dash > dashTime) {	
+					Context.SharedInstance.player1Dash = (-1*dashTime);
 					anim.SetBool ("P1Dash", false);
 				}
 				break;
 			case Players.P2:
-				if (Context.SharedInstance.player2_dash > 0 || Context.SharedInstance.player2_dash < 0) {
-					Context.SharedInstance.player2_dash++;
+				if (Context.SharedInstance.player2Dash > 0 || Context.SharedInstance.player2Dash < 0) {
+					Context.SharedInstance.player2Dash++;
 				}
-				if (Context.SharedInstance.player2_dash > dashTime) {
-					Context.SharedInstance.player2_dash = (-1*dashTime);
+				if (Context.SharedInstance.player2Dash > dashTime) {
+					Context.SharedInstance.player2Dash = (-1*dashTime);
 					anim.SetBool ("P2Dash", false);
 				}
 				break;					
@@ -102,27 +102,28 @@ public class KeyboardHandler : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-		Players player = (gameObject.name == "Player1") ? Players.P1 : Players.P2;
-		//Check Player Movements
-		CheckArrows(player);
-		//Air mattress
-		if (Context.SharedInstance.isKeyPress(player, Keys.DASH)) {
-			if (transform.position.y < -1.8f) {
-				transform.position = new Vector2(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), Mathf.Clamp (rigidbody2D.position.y, -4, boundary.yMax));
-				return;
+		if (!Context.SharedInstance.gameEnded) {
+			Players player = (gameObject.name == "Player1") ? Players.P1 : Players.P2;
+			//Check Player Movements
+			CheckArrows(player);
+			//Air mattress
+			if (Context.SharedInstance.isKeyPress(player, Keys.DASH)) {
+				if (transform.position.y < -1.8f) {
+					transform.position = new Vector2(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), Mathf.Clamp (rigidbody2D.position.y, -4, boundary.yMax));
+					return;
+				}
 			}
-		}
-
-		//Limites de campo de juego
-		transform.position = new Vector2(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax));
-
-		//Animation
-		animId = (player == Players.P1) ? "P1Punch" : "P2Punch" ;
-		if (Context.SharedInstance.isKeyPress (player, Keys.PUNCH)) {
-			anim.SetBool (animId, true);
-		} else {
-			anim.SetBool (animId, false);
+			
+			//Limites de campo de juego
+			transform.position = new Vector2(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax));
+			
+			//Animation
+			animId = (player == Players.P1) ? "P1Punch" : "P2Punch" ;
+			if (Context.SharedInstance.isKeyPress (player, Keys.PUNCH)) {
+				anim.SetBool (animId, true);
+			} else {
+				anim.SetBool (animId, false);
+			}				
 		}
 	}
 }

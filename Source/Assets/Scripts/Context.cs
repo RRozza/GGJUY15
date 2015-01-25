@@ -65,6 +65,7 @@ public class Context : MonoBehaviour
 				}
 		}
 
+		public int timerSeconds = 0;
 		public bool trembleEnabled = false;
 		public bool parachuteOpenEnabled = false;
 		public bool player1_mutex = false;
@@ -72,6 +73,8 @@ public class Context : MonoBehaviour
 		public int player1_dash = 0;
 		public int player2_dash = 0;
 		public ParachuteState parachute_state = ParachuteState.NONE;
+		public string gameWinner = "";
+		public bool parachuteIsOpened = false;
 
 		public bool isKeyPress (Players player, Keys key)
 		{
@@ -92,6 +95,11 @@ public class Context : MonoBehaviour
 				return false;
 		}
 
+		public void updateTimer (int seconds)
+		{
+				this.timerSeconds = seconds;
+		}
+
 		public void startParachuteTremble ()
 		{
 				trembleEnabled = true;
@@ -101,6 +109,17 @@ public class Context : MonoBehaviour
 		{
 				parachuteOpenEnabled = true;
 		}
+
+		public void winGame (string winnerAux)
+		{
+				this.gameWinner = winnerAux;
+				//Extra win logic
+				//Player victory animation
+
+				//remove log
+				Debug.Log ("PLAYER " + winnerAux + " IS THE WINNER");
+		}
+
 
 
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 378b9407e4247fa4a8c64f68935955bd
+guid: 12bf513a63d84974cb565841ae77ab99
 TextureImporter:
   fileIDToRecycleName:
     21300000: P1Dash_0
@@ -10,6 +10,22 @@ TextureImporter:
     21300010: P1Dash_5
     21300012: P1Dash_6
     21300014: P1Dash_7
+    21300016: P1Dash_8
+    21300018: P1Dash_9
+    21300020: P1Dash_10
+    21300022: P1Dash_11
+    21300024: P1Dash_12
+    21300026: P1Dash_13
+    21300028: P1Dash_14
+    21300030: P1Dash_15
+    21300032: P1Dash_16
+    21300034: P1Dash_17
+    21300036: P1Dash_18
+    21300038: P1Dash_19
+    21300040: P1Dash_20
+    21300042: P1Dash_21
+    21300044: P1Dash_22
+    21300046: P1Dash_23
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -45,7 +61,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 200
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
@@ -55,79 +71,239 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1200
-        width: 550
-        height: 400
+        y: 2220
+        width: 719
+        height: 555
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: P1Dash_1
       rect:
         serializedVersion: 2
-        x: 550
-        y: 1200
-        width: 550
-        height: 400
+        x: 719
+        y: 2220
+        width: 719
+        height: 555
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: P1Dash_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 800
-        width: 550
-        height: 400
+        x: 1438
+        y: 2220
+        width: 719
+        height: 555
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: P1Dash_3
       rect:
         serializedVersion: 2
-        x: 550
-        y: 800
-        width: 550
-        height: 400
+        x: 2157
+        y: 2220
+        width: 719
+        height: 555
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: P1Dash_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 400
-        width: 550
-        height: 400
+        x: 2876
+        y: 2220
+        width: 719
+        height: 555
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: P1Dash_5
       rect:
         serializedVersion: 2
-        x: 550
-        y: 400
-        width: 550
-        height: 400
+        x: 0
+        y: 1665
+        width: 719
+        height: 555
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: P1Dash_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 550
-        height: 400
+        x: 719
+        y: 1665
+        width: 719
+        height: 555
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: P1Dash_7
       rect:
         serializedVersion: 2
-        x: 550
+        x: 1438
+        y: 1665
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_8
+      rect:
+        serializedVersion: 2
+        x: 2157
+        y: 1665
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_9
+      rect:
+        serializedVersion: 2
+        x: 2876
+        y: 1665
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1110
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_11
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 1110
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_12
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 1110
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_13
+      rect:
+        serializedVersion: 2
+        x: 2157
+        y: 1110
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_14
+      rect:
+        serializedVersion: 2
+        x: 2876
+        y: 1110
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 555
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_16
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 555
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_17
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 555
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_18
+      rect:
+        serializedVersion: 2
+        x: 2157
+        y: 555
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_19
+      rect:
+        serializedVersion: 2
+        x: 2876
+        y: 555
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_20
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
-        width: 550
-        height: 400
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_21
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 0
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_22
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 0
+        width: 719
+        height: 555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: P1Dash_23
+      rect:
+        serializedVersion: 2
+        x: 2157
+        y: 0
+        width: 719
+        height: 555
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

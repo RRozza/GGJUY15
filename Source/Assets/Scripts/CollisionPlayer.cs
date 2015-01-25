@@ -37,33 +37,35 @@ public class CollisionPlayer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		GameObject player1 = Registry.Find("Player1");
-		GameObject player2 = Registry.Find("Player2");
-		
-		if (timer > 0) {
-			if (Context.SharedInstance.player2Mutex) {
-				player2.transform.position += (Vector3.up * speed * Time.deltaTime);
-				timer--;
-			}
-			
-			if (Context.SharedInstance.player1Mutex) {
-				player1.transform.position += (Vector3.up * speed * Time.deltaTime);
-				timer--;
-			}
-		} else {
-			Context.SharedInstance.player1Mutex = false;
-			Context.SharedInstance.player2Mutex = false;
-			anim.SetBool ("P1Stun", false);
-			anim.SetBool ("P2Stun", false);
-			timer = 100;
-		}		
+		if (Context.SharedInstance.gameStarted && !Context.SharedInstance.gameEnded) {
+				GameObject player1 = Registry.Find ("Player1");
+				GameObject player2 = Registry.Find ("Player2");
 
-		animId = (Context.SharedInstance.parachute_state == ParachuteState.P1) ? "P1Parachute" : "P2Parachute";
-		if (Context.SharedInstance.parachute_state == ParachuteState.NONE) {
-			anim.SetBool ("P1Parachute", false);
-			anim.SetBool ("P2Parachute", false);
-		} else {
-			anim.SetBool (animId, true);	
+				if (timer > 0) {
+						if (Context.SharedInstance.player2Mutex) {
+								player2.transform.position += (Vector3.up * speed * Time.deltaTime);
+								timer--;
+						}
+	
+						if (Context.SharedInstance.player1Mutex) {
+								player1.transform.position += (Vector3.up * speed * Time.deltaTime);
+								timer--;
+						}
+				} else {
+						Context.SharedInstance.player1Mutex = false;
+						Context.SharedInstance.player2Mutex = false;
+						anim.SetBool ("P1Stun", false);
+						anim.SetBool ("P2Stun", false);
+						timer = 100;
+				}		
+
+				animId = (Context.SharedInstance.parachute_state == ParachuteState.P1) ? "P1Parachute" : "P2Parachute";
+				if (Context.SharedInstance.parachute_state == ParachuteState.NONE) {
+						anim.SetBool ("P1Parachute", false);
+						anim.SetBool ("P2Parachute", false);
+				} else {
+						anim.SetBool (animId, true);	
+				}
 		}
 	}
 	

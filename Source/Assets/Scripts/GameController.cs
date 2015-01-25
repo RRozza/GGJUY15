@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour {
 	
 	void Update ()
 	{		
-		if (!Context.SharedInstance.gameEnded) {
+		if (Context.SharedInstance.gameStarted && !Context.SharedInstance.gameEnded) {
 			//Spawn generation
 			foreach (GameObject spawn in spawns) {
 				spawn.transform.position += (Vector3.up * spawnSpeed * Time.deltaTime);	
@@ -76,10 +76,7 @@ public class GameController : MonoBehaviour {
 			timecount = Time.time - starttime;
 			Context.SharedInstance.updateTimer((int)(timecount % 60f));
 		
-		} else {
-
 		}
-
 	}
 
 	IEnumerator SpawnWaves()
@@ -102,6 +99,7 @@ public class GameController : MonoBehaviour {
 	{
 		Context.SharedInstance.parachuteIsOpened = true;
 		Context.SharedInstance.gameEnded = true;
+		Context.SharedInstance.winner = winner;
 
 		switch (winner) {
 			case Players.NONE:

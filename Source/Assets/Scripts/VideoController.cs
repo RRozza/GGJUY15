@@ -3,17 +3,20 @@ using System.Collections;
 
 public class VideoController : MonoBehaviour
 {
-
-		// Use this for initialization
-		void Start ()
-		{
+	void Update ()
+	{
+		if (Context.SharedInstance.gameStarted && !Context.SharedInstance.gameEnded) {
 				MovieTexture movie = renderer.material.mainTexture as MovieTexture;
-				movie.Play ();
+				if (!movie.isPlaying) {
+						movie.Play ();
+				}				
 		}
-	
-		// Update is called once per frame
-		void Update ()
-		{
-	
+
+		if (Context.SharedInstance.gameEnded) {
+			gameObject.transform.position += new Vector3 (0, 0, 15);
+			GameObject.Destroy(gameObject);
 		}
+
+	}
+
 }

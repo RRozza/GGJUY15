@@ -73,6 +73,9 @@ public class Context : MonoBehaviour
 		public int player1Dash = 0;
 		public int player2Dash = 0;
 		public bool gameEnded = false;
+		public bool gameStarted = false;
+		public bool introFinished = false;
+		public Players winner = Players.NONE;
 		public ParachuteState parachute_state = ParachuteState.NONE;
 		public bool parachuteIsOpened = false;
 

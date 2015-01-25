@@ -102,7 +102,7 @@ public class KeyboardHandler : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!Context.SharedInstance.gameEnded) {
+		if (Context.SharedInstance.gameStarted && !Context.SharedInstance.gameEnded) {
 			Players player = (gameObject.name == "Player1") ? Players.P1 : Players.P2;
 			//Check Player Movements
 			CheckArrows(player);

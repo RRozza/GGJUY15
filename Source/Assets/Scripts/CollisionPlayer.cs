@@ -2,123 +2,93 @@ using UnityEngine;
 using System.Collections;
 
 public class CollisionPlayer : MonoBehaviour {
-
+	private int sLapse, dLapse;
 	private Animator anim;
-	private string animId;
-	private int timer = 100;
-
-	public float speed;
+	private Players enemy;
+	private string enemyId, animStunId, animDashId, animGrabParachuteId;
+	
+	public int stunLapse, dashLapse;
+	public float stunSpeed, dashSpeed;
 	public int impulse;
+	public Players player;
 
 	void Start() {
+		enemyId = (player == Players.P1) ? "Player2" : "Player1";
+
+		enemy = (player == Players.P1) ? Players.P2 : Players.P1;
+
 		anim = GetComponent<Animator> ();
+		animStunId = (player == Players.P1) ? "P1Stun" : "P2Stun";
+		animDashId = (player == Players.P1) ? "P1Dash" : "P2Dash";
+		animGrabParachuteId = (player == Players.P1) ? "P1Parachute" : "P2Parachute";
+
+		sLapse = stunLapse;
+		dLapse = dashLapse;
 	}
 
-	void Stun(Players player) {
-		GameObject parachute = Registry.Find("Parachute");
+	void Stun() {
+		Context.Instance.SetStun(player, true);
 
-		if (player == Players.P1) {
-			Context.SharedInstance.player1Mutex = true;
-			if (Context.SharedInstance.parachute_state == ParachuteState.P1) {
-				Context.SharedInstance.parachute_state = ParachuteState.NONE;
-				Context.SharedInstance.winner = Players.NONE;
-				parachute.SetActive(true);	
-			}
+		if (Context.Instance.ParachuteState() == player) {
+			Context.Instance.SetParachuteState(Players.NONE);
+
+			GameObject parachute = Registry.Find("Parachute");
+			anim.SetBool(animGrabParachuteId, false);
+			parachute.SetActive(true);
 		} 
 
-		if (player == Players.P2){
-			Context.SharedInstance.player2Mutex = true;
-			if (Context.SharedInstance.parachute_state == ParachuteState.P2) {
-				Context.SharedInstance.parachute_state = ParachuteState.NONE;
-				Context.SharedInstance.winner = Players.NONE;
-				parachute.SetActive(true);	
-			}
-		}
-
-		animId = (player == Players.P1) ? "P1Stun" : "P2Stun";
-		anim.SetBool (animId, true);
+		anim.SetBool(animStunId, true);
 	}
 
-	// Update is called once per frame
 	void Update () {
-		if (Context.SharedInstance.gameStarted && !Context.SharedInstance.gameEnded) {
-				GameObject player1 = Registry.Find ("Player1");
-				GameObject player2 = Registry.Find ("Player2");
-
-				if (timer > 0) {
-						if (Context.SharedInstance.player2Mutex) {
-								player2.transform.position += (Vector3.up * speed * Time.deltaTime);
-								timer--;
-						}
-	
-						if (Context.SharedInstance.player1Mutex) {
-								player1.transform.position += (Vector3.up * speed * Time.deltaTime);
-								timer--;
-						}
+		if (Context.Instance.GameState() == GameStates.STARTED) {
+			if (Context.Instance.IsStuned(player)) {
+				if (sLapse > 0) {
+					transform.position += (Vector3.up * stunSpeed * Time.deltaTime);
+					sLapse--;
 				} else {
-						Context.SharedInstance.player1Mutex = false;
-						Context.SharedInstance.player2Mutex = false;
-						anim.SetBool ("P1Stun", false);
-						anim.SetBool ("P2Stun", false);
-						timer = 100;
-				}		
-
-				animId = (Context.SharedInstance.parachute_state == ParachuteState.P1) ? "P1Parachute" : "P2Parachute";
-				if (Context.SharedInstance.parachute_state == ParachuteState.NONE) {
-						anim.SetBool ("P1Parachute", false);
-						anim.SetBool ("P2Parachute", false);
-				} else {
-						anim.SetBool (animId, true);	
+					Context.Instance.SetStun(player, false);
+					sLapse = stunLapse;
+					anim.SetBool(animStunId, false);
 				}
+			}
+
+			if (Context.Instance.IsDashing(player)) {
+				if (dLapse > 0) {
+					transform.position += (Vector3.down * dashSpeed * Time.deltaTime);
+					dLapse--;
+				} else {
+					Context.Instance.SetDash(player, false);
+					dLapse = dashLapse;
+					anim.SetBool(animDashId, false);
+				}
+			}
 		}
 	}
 	
 	void OnTriggerEnter2D (Collider2D collision){
-		GameObject player1 = Registry.Find("Player1");
-		GameObject player2 = Registry.Find("Player2");
+		if (collision.gameObject.CompareTag("Player")){
+			GameObject enemyGO = Registry.Find(enemyId);
+			
+			bool enemyOnTop = enemyGO.transform.position.y > transform.position.y;
+			if (Context.Instance.isKeyPress(enemy, Keys.DASH) && enemyOnTop) {
+				Stun();
+			}
+			
+			bool enemyWithoutParachute = Context.Instance.ParachuteState() != enemy;
+			if (Context.Instance.isKeyPress(enemy, Keys.PUNCH) && enemyWithoutParachute) {
+				Stun();
+			}
+
+		}
+	
+		if (collision.gameObject.CompareTag("Obstacle")) {
+			Stun();
+		}
 		
-		if (collision.gameObject.CompareTag("Player")) {
-			bool p1AtTop = player1.transform.position.y > player2.transform.position.y;
-			bool p2AtTop = player1.transform.position.y < player2.transform.position.y;
-			
-			if (Context.SharedInstance.isKeyPress(Players.P1, Keys.DASH) && p1AtTop) {
-				Stun (Players.P2);
-			}
-			
-			if (Context.SharedInstance.isKeyPress(Players.P2, Keys.DASH) && p2AtTop) {
-				Stun (Players.P1);
-			}
-
-			bool punch1Pressed = Context.SharedInstance.isKeyPress(Players.P1, Keys.PUNCH);
-			bool punch2Pressed = Context.SharedInstance.isKeyPress(Players.P2, Keys.PUNCH);
-			float punch1 = (punch1Pressed && Context.SharedInstance.parachute_state != ParachuteState.P1) ? 3 : 1;
-			float punch2 = (punch2Pressed && Context.SharedInstance.parachute_state != ParachuteState.P2 ) ? 3 : 1;
-			if (player1.transform.position.x > player2.transform.position.x) {
-				player1.transform.position += (Vector3.right * speed * Time.deltaTime) * impulse * punch2;
-				player2.transform.position += (Vector3.left * speed * Time.deltaTime) * impulse * punch1;
-
-				if (punch1Pressed && Context.SharedInstance.parachute_state == ParachuteState.P2) {
-					Stun (Players.P2);
-				}
-			} 
-
-			if (player1.transform.position.x > player2.transform.position.x) {
-				player1.transform.position += (Vector3.left * speed * Time.deltaTime) * impulse * punch2;
-				player2.transform.position += (Vector3.right * speed * Time.deltaTime) * impulse * punch1;
-
-				if (punch2Pressed && Context.SharedInstance.parachute_state == ParachuteState.P1) {
-					Stun (Players.P1);
-				}		
-			}
-		}
-
-		if (collision.gameObject.CompareTag ("Obstacle")) {
-			Players player = (gameObject.name == "Player1") ? Players.P1 : Players.P2;	
-			Stun (player);
-		}
-
-		if (collision.gameObject.CompareTag ("Parachute")) {
-			Context.SharedInstance.parachute_state = (gameObject.name == "Player1") ? ParachuteState.P1 : ParachuteState.P2;
+		if (collision.gameObject.CompareTag("Parachute")) {
+			Context.Instance.SetParachuteState(player);
+			anim.SetBool(animGrabParachuteId, true);
 			Registry.Find("Parachute").SetActive(false);
 		}
 	}

@@ -2,41 +2,46 @@
 using System.Collections;
 
 public class KeyboardHandler : MonoBehaviour {
-
 	private Animator anim;
-	private string animId;
+	private bool left, right, up, down;
+	private string animId, animDashId, animMoveHId, animMoveVId, animPanchId;
 
-	public float speed;
-	public float dashSpeed;
-	public int dashTime;
-	public int dashBlockTime;
+	public Players player;
 	public Boundary boundary;
+	public float speed;
+	public int dashTime, dashBlockTime;
 
 	void Start() {
 		anim = GetComponent<Animator> ();
+		animMoveHId = (player == Players.P1) ? "P1MoveH" : "P2MoveH";
+		animMoveVId = (player == Players.P1) ? "P1MoveV" : "P2MoveV";
+		animDashId = (player == Players.P1) ? "P1Dash" : "P2Dash";
+		animPanchId = (player == Players.P1) ? "P1Punch" : "P2Punch";
+
+		left = false;
+		right = false;
+		up = false;
+		down = false;
 	}
 
-	void CheckArrows(Players player) {
-		bool left = Context.SharedInstance.isKeyPress (player, Keys.LEFT);
-		bool right = Context.SharedInstance.isKeyPress (player, Keys.RIGHT);
-		bool up = Context.SharedInstance.isKeyPress (player, Keys.UP);
-		bool down = Context.SharedInstance.isKeyPress (player, Keys.DOWN);
+	void CheckKeys() {
+		left = Context.Instance.isKeyPress(player, Keys.LEFT);
+		right = Context.Instance.isKeyPress(player, Keys.RIGHT);
+		up = Context.Instance.isKeyPress(player, Keys.UP);
+		down = Context.Instance.isKeyPress(player, Keys.DOWN);
 
 		if (left) {
-			animId = (player == Players.P1) ? "P1MoveH" : "P2MoveH";
-			anim.SetBool (animId, true);
+			anim.SetBool(animMoveHId, true);
 			transform.position += Vector3.left * speed * Time.deltaTime;
 		} 
 
 		if (right) {
-			animId = (player == Players.P1) ? "P1MoveH" : "P2MoveH";
-			anim.SetBool (animId, true);
+			anim.SetBool(animMoveHId, true);
 			transform.position += Vector3.right * speed * Time.deltaTime;
 		}
-		
+
 		if (!left && !right){
-			animId = (player == Players.P1) ? "P1MoveH" : "P2MoveH";
-			anim.SetBool (animId, false);
+			anim.SetBool(animMoveHId, false);
 		}
 
 		if (up) {
@@ -44,86 +49,42 @@ public class KeyboardHandler : MonoBehaviour {
 		}
 
 		if (down) {
-			animId = (player == Players.P1) ? "P1MoveV" : "P2MoveV";
-			anim.SetBool (animId, true);
+			anim.SetBool(animMoveVId, true);
 
-			if (Context.SharedInstance.isKeyPress (player, Keys.DASH)) {
-				switch (player) {
-				case Players.P1: 
-					if (Context.SharedInstance.player1Dash == 0) {
-						Context.SharedInstance.player1Dash++;
-					}
-					break;
-				case Players.P2:
-					if (Context.SharedInstance.player2Dash == 0) {
-						Context.SharedInstance.player2Dash++;
-					}
-					break;					
-				} 
-
-				ParachuteState playerGrabParachute = (player == Players.P1) ? ParachuteState.P1 : ParachuteState.P2;
-				bool dashPressed = (player == Players.P1) ? Context.SharedInstance.player1Dash > 0 : Context.SharedInstance.player2Dash > 0;
-				bool canDash = (Context.SharedInstance.parachute_state != playerGrabParachute && dashPressed);
-
-				if (canDash) {
-					animId = (player == Players.P1) ? "P1Dash" : "P2Dash";
-					anim.SetBool (animId, true);
-					transform.position += Vector3.down * dashSpeed * Time.deltaTime;
-				} 
+			if (Context.Instance.isKeyPress(player, Keys.DASH) && Context.Instance.ParachuteState() != player) {		
+				Context.Instance.SetDash(player, true);
+				anim.SetBool(animDashId, true);
 			} else {
 				transform.position += Vector3.down * speed * Time.deltaTime;
 			}
 		} else {
-			animId = (player == Players.P1) ? "P1MoveV" : "P2MoveV";
-			anim.SetBool (animId, false);
+			anim.SetBool (animMoveVId, false);
 		}
 
-		switch(player) {
-			case Players.P1: 
-				if (Context.SharedInstance.player1Dash > 0 || Context.SharedInstance.player1Dash < 0) {
-					Context.SharedInstance.player1Dash++;
-				}
-			if (Context.SharedInstance.player1Dash > dashTime) {	
-					Context.SharedInstance.player1Dash = (-1*dashTime);
-					anim.SetBool ("P1Dash", false);
-				}
-				break;
-			case Players.P2:
-				if (Context.SharedInstance.player2Dash > 0 || Context.SharedInstance.player2Dash < 0) {
-					Context.SharedInstance.player2Dash++;
-				}
-				if (Context.SharedInstance.player2Dash > dashTime) {
-					Context.SharedInstance.player2Dash = (-1*dashTime);
-					anim.SetBool ("P2Dash", false);
-				}
-				break;					
-		} 
-	}
-
-	// Update is called once per frame
-	void Update () {
-		if (Context.SharedInstance.gameStarted && !Context.SharedInstance.gameEnded) {
-			Players player = (gameObject.name == "Player1") ? Players.P1 : Players.P2;
-			//Check Player Movements
-			CheckArrows(player);
-			//Air mattress
-			if (Context.SharedInstance.isKeyPress(player, Keys.DASH)) {
-				if (transform.position.y < -1.8f) {
-					transform.position = new Vector2(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), Mathf.Clamp (rigidbody2D.position.y, -4, boundary.yMax));
-					return;
-				}
-			}
-			
-			//Limites de campo de juego
-			transform.position = new Vector2(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax));
-			
-			//Animation
-			animId = (player == Players.P1) ? "P1Punch" : "P2Punch" ;
-			if (Context.SharedInstance.isKeyPress (player, Keys.PUNCH)) {
-				anim.SetBool (animId, true);
+		if (!Context.Instance.IsDashing(player)) {
+			if (Context.Instance.isKeyPress(player, Keys.PUNCH) && Context.Instance.ParachuteState() != player) {
+				anim.SetBool(animPanchId, true);
 			} else {
-				anim.SetBool (animId, false);
+				anim.SetBool(animPanchId, false);
 			}				
+		}
+	}
+	
+	void Update () {
+		if (Context.Instance.GameState() == GameStates.STARTED) {
+			if (!Context.Instance.IsDashing(player)) {
+				if (!Context.Instance.IsStuned(player)) {
+					CheckKeys();
+				}
+
+				boundary.yMin = -2;
+			} else {
+				boundary.yMin = -4;
+			}
+
+			float x = Mathf.Clamp(rigidbody2D.position.x, boundary.xMin, boundary.xMax);
+			float y = Mathf.Clamp(rigidbody2D.position.y, boundary.yMin, boundary.yMax);
+			transform.position = new Vector2(x, y);
 		}
 	}
 }

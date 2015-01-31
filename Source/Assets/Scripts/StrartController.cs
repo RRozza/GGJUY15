@@ -6,25 +6,24 @@ public class StrartController : MonoBehaviour {
 
 	private MovieTexture movie;
 
-	void Start ()
-	{
+	void Start () {
 		movie = renderer.material.mainTexture as MovieTexture;
 		movie.loop = true;
 	}
 
 	void Update () {
-		if (Context.SharedInstance.introFinished && !movie.isPlaying) {
+		if ((Context.Instance.GameState() == GameStates.START) && (!movie.isPlaying)) {
 			movie.Play ();
 			audio.Play();
 		}
 
-		if (Input.anyKeyDown) {
+		if ((Context.Instance.GameState() == GameStates.START) && (Input.anyKeyDown)) {
 			movie.Stop();
 			audio.Stop();
-			gameObject.transform.position += new Vector3(0,0,15);
-			Context.SharedInstance.gameStarted = true;
-			Context.SharedInstance.startTime = Time.time;
+			gameObject.SetActive(false);
 			GameObject.Destroy(gameObject);
+			Context.Instance.SetStartTime(Time.time); 
+			Context.Instance.SetGameState(GameStates.STARTED);
 		}
 	}
 }

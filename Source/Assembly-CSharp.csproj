@@ -46,21 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Audio.cs" />
-     <Compile Include="Assets\Scripts\AudioParachute.cs" />
-     <Compile Include="Assets\Scripts\CollisionParachute.cs" />
+     <Compile Include="Assets\Scripts\BackgroundController.cs" />
      <Compile Include="Assets\Scripts\CollisionPlayer.cs" />
      <Compile Include="Assets\Scripts\Context.cs" />
      <Compile Include="Assets\Scripts\EndController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\Generator.cs" />
      <Compile Include="Assets\Scripts\IntroController.cs" />
      <Compile Include="Assets\Scripts\KeyboardHandler.cs" />
-     <Compile Include="Assets\Scripts\ObstacleAsension.cs" />
+     <Compile Include="Assets\Scripts\ObjectsBehaviour.cs" />
+     <Compile Include="Assets\Scripts\ParachuteBehaviour.cs" />
      <Compile Include="Assets\Scripts\RegisterGO.cs" />
      <Compile Include="Assets\Scripts\StrartController.cs" />
-     <Compile Include="Assets\Scripts\TremblingBehaviour.cs" />
-     <Compile Include="Assets\Scripts\VideoController.cs" />
-     <Compile Include="Assets\Scripts\VideoController2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
